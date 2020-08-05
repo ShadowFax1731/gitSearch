@@ -1,0 +1,15 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: $m-size; //1rem = 16px
+  background-image: url("../../images/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+button {
+  cursor: pointer;
+}

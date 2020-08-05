@@ -1,0 +1,45 @@
+.App {
+  color: white;
+  width: 70rem;
+}
+
+.App__form {
+  padding: 1.6rem;
+  display: inline-block;
+  margin-top: 10rem;
+  margin-left: 40rem;
+  width: 100%;
+}
+
+.App__form__input {
+  padding: 1.2rem;
+  border: none;
+  border-bottom: 0.3rem solid #1d2028;
+  color: $purple;
+  margin: $s-size;
+  margin-left: 10rem;
+  margin-bottom: $m-size;
+  width: 40%;
+}
+
+.App__form__button {
+  background: $purple;
+  border-bottom: 0.3rem solid #693cad;
+  color: white;
+  font-weight: 700;
+  font-size: $m-size;
+  padding: 1.2rem;
+  width: 15%;
+}
+
+.App__error {
+  margin-left: 50rem;
+  text-align: center;
+  width: 20rem;
+}
+
+.App__loading {
+  margin-left: 50rem;
+  text-align: center;
+  width: 20rem;
+}
