@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./components/Card";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
@@ -29,9 +29,24 @@ const App = () => {
     e.target.userInput.value = "";
     setIsLoading(true);
   };
-
-  return (
-    <div className="App">
+  function useNetwork(){
+    const [isOnline, setNetwork] = useState(window.navigator.onLine);
+    const updateNetwork = () => {
+       setNetwork(window.navigator.onLine);
+    };
+    useEffect(() => {
+       window.addEventListener("offline", updateNetwork);
+       window.addEventListener("online", updateNetwork);
+       return () => {
+          window.removeEventListener("offline", updateNetwork);
+          window.removeEventListener("online", updateNetwork);
+       };
+    });
+    return isOnline;
+ };
+ let app= <p className="Connection">OOPS!! No Internet Connection</p>
+    if(useNetwork()){
+      app= <div className="App">
       <div className="App__form">
         <form onSubmit={handleSubmit}>
           <input
@@ -46,14 +61,17 @@ const App = () => {
           </button>
         </form>
       </div>
-      {isLoading && <div className="App__loading ">LOADING...</div>}
-      {status === "OK" ? <Card head={data} /> : ""}
+      {isLoading && <div className="loader">LOADING...</div>}
+      {status === "OK" && !isLoading ? <Card head={data} /> : ""}
       {status === "ERROR" && (
         <div className="App__error">
           <p>Error! User Not Found</p>
         </div>
       )}
     </div>
+    }
+  return ( 
+      app
   );
 };
 
