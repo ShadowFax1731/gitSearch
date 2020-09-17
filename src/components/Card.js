@@ -21,7 +21,12 @@ export default (props) => {
       <p>Following: {following}</p>
       <p>Public Repositories: {public_repos}</p>
       <button className="card__button">
-        <a href={html_url} className="card__link">
+        <a
+          href={html_url}
+          className="card__link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           View Profile
         </a>
       </button>
